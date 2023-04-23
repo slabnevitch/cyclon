@@ -139,6 +139,7 @@
 // require('./vendor/libs-vanilla/counter/counter.js')
 
 // var tingle = require('./vendor/libs-vanilla/tingle-master/dist/tingle.js')
+var docSlider = require('./vendor/libs-vanilla/docSlider/docSlider.js')
 	
 //- end VANILLA JS===================================
 
@@ -146,5 +147,6 @@
 // require('./vendor/jquery-scrollify/jquery.scrollify.js')
 
 document.addEventListener('DOMContentLoaded', () => {
-
+	console.log(docSlider);
+	// docSlider.init();
 }); //DOMContentLoaded

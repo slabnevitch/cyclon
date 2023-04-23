@@ -5,15 +5,15 @@
 html, body{
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	// height: 100%;
 }
 body{
 	// font-family: $reg;
 	font-weight: normal;
-	font-size: 16px;
+	font-size: rem(14);
 	min-width: 320px;
 	position: relative;
-	line-height: 1.6;
+	// line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	overflow-x: hidden;
 	color: $text;
@@ -25,12 +25,12 @@ body{
 	}
 }
 
-#wrapper-for-scroll-fix{
-	overflow: hidden;
-}
-#wrapper-for-scroll-fix.modal-open {
-    padding-right: var(--scroll-width);
-}
+// #wrapper-for-scroll-fix{
+// 	overflow: hidden;
+// }
+// #wrapper-for-scroll-fix.modal-open {
+//     padding-right: var(--scroll-width);
+// }
 
 // Прижать футер к низу
 
@@ -55,14 +55,7 @@ body{
 
 // END Прижать футер к низу
 section{
-	// min-height: 100%;
-	// height: 100%;
-	padding-top: 123px;
-	// overflow-y: auto;
-	// overflow: hidden;
-	@include max-screen($sm){
-		padding-top: 70px;
-	}
+	
 }
 ul, li{
 	margin: 0;
@@ -88,9 +81,11 @@ textarea.input{
 //END input
 .wrapper{
 	margin: 0 auto;
-	padding-left: $containerPaddings / 2 + px;
-	padding-right: $containerPaddings / 2 + px;
-	max-width: $maxContainerWidth + px;
+	@include adaptive-value('padding-left',  240, 15, 2);
+	@include adaptive-value('padding-right',  240, 15, 2);
+
+	// padding-left: #{$containerPaddings / 2 + px};
+	// max-width: $maxContainerWidth + px;
 	// @include row-flex();
 	// @include wrapper();
 }

@@ -1,11 +1,11 @@
-$maxWidth: 1440;//ширина макета в граф. редакторе
-$maxWidthContainer: 1200;//ширина ограничивающего контейнера без паддингов
-$containerPaddings: 30;//сумма левого и правого паддингов ограничивающего контейнера
+$maxWidth: 1920;//ширина макета в граф. редакторе
+$maxWidthContainer: 0;//ширина ограничивающего контейнера без паддингов
+$containerPaddings: 480;//сумма левого и правого паддингов ограничивающего контейнера
 $maxContainerWidth: $maxWidthContainer + $containerPaddings;// итоговая ширина ограничивающего контейнера
 
 // colors
-$accent: #7E74F1;
-$text: #232E35;
+$accent: #1C1F25;
+$text: #6A6E77;
 $gray:#EAE6FE;
 
 // paths
