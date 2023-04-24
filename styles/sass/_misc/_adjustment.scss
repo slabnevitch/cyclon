@@ -10,7 +10,7 @@ html, body{
 body{
 	// font-family: $reg;
 	font-weight: normal;
-	font-size: rem(14);
+	@include adaptive-value('font-size', 25, 18, 2);
 	min-width: 320px;
 	position: relative;
 	// line-height: 1.6;
@@ -83,12 +83,24 @@ textarea.input{
 	margin: 0 auto;
 	@include adaptive-value('padding-left',  240, 15, 2);
 	@include adaptive-value('padding-right',  240, 15, 2);
+	padding-top: rem(155);
+	padding-bottom: rem(155);
 	flex: 1 1 auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
 
 	// padding-left: #{$containerPaddings / 2 + px};
 	// max-width: $maxContainerWidth + px;
 	// @include row-flex();
 	// @include wrapper();
+}
+.page__body{
+		@include adaptive-value('padding-left',  240, 0, 2);
+	@include adaptive-value('padding-right',  240, 0, 2);
+	flex: 1 1 auto;
+	overflow: hidden;
+	height: 100%;
 }
 // classes for smartgrid(c) structure
 // .wrapper-smart{
@@ -139,7 +151,6 @@ padding-bottom: 52.25%;
 	}
 }
 ._fit{
-	padding-bottom: 80%;
 	position: relative;
 }
 ._fit ._fit-img{//_fit - class for object-fit
@@ -275,7 +286,16 @@ padding-bottom: 52.25%;
 			display: flex;
 			align-items: center;
 			// justify-content: center;
-			flex-direction: column;
+			// flex-direction: column;
+		}
+		&--invert{
+			.page-header__title {
+				// color: #fff;
+				
+			}
+			.page-header__text {
+				color: #E3E6EC;
+			}
 		}
 }
 .docSlider-pager{
@@ -290,5 +310,24 @@ padding-bottom: 52.25%;
 	background-color:$accent;
 	border-radius: 0;
 }
+.page-header {
+	position: relative;
+	z-index: 2;
+}
+.page-header__text {
 
+	line-height: calc(31 / 25);
+
+	&:not(:last-child){
+		margin-bottom: em(32);
+	}
+
+}
+.page-header__title {
+	max-width: rem(400);
+	font-weight: 700;
+	// font-size: 60px;
+	@include adaptive-value('font-size', 60, 35, 2);
+	line-height: calc(75 / 60);
+}
 /*--------------------END adjustment----------------------*/ 
