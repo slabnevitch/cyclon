@@ -83,6 +83,7 @@ textarea.input{
 	margin: 0 auto;
 	@include adaptive-value('padding-left',  240, 15, 2);
 	@include adaptive-value('padding-right',  240, 15, 2);
+	flex: 1 1 auto;
 
 	// padding-left: #{$containerPaddings / 2 + px};
 	// max-width: $maxContainerWidth + px;
@@ -254,4 +255,40 @@ padding-bottom: 52.25%;
     transform: rotate(-45deg) translate(6px, -7px);
   } 
 } 
+.main{
+	counter-reset: myCounter;
+}
+.page{
+		// position: relative;
+		&:after{
+			position: absolute;
+			top: 50%;
+			@include adaptive-value('right', 120, 0, 2);
+			transform: translate(-50%, 50%);
+			counter-increment: myCounter;
+			content:counter(myCounter, decimal-leading-zero);
+			color: #E3E6EC;
+			font-weight: 700;
+			@include adaptive-value('font-size', 60, 25, 2);
+		}
+		&--center{
+			display: flex;
+			align-items: center;
+			// justify-content: center;
+			flex-direction: column;
+		}
+}
+.docSlider-pager{
+	right: auto;
+	@include adaptive-value('left', 120, 0, 2);
+	transform: translate(-50%, 0);
+}
+.docSlider-button{
+	width: rem(5);
+	height: rem(50);
+	margin: 10px 0;
+	background-color:$accent;
+	border-radius: 0;
+}
+
 /*--------------------END adjustment----------------------*/ 
