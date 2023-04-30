@@ -1,0 +1,60 @@
+.page-03{
+	.wrapper{
+
+		@include max-screen($md){
+			flex-direction: column;
+		}
+		@include min-screen($md){
+			justify-content: flex-end;
+			
+		}
+	}
+	.page__content{
+		@include max-screen($md){
+			width: 100%;
+			flex: 1 1 auto;
+			margin-bottom: 30px;
+		}
+	}
+}
+.page-03__img{
+	// padding-bottom: prc(720,1080);
+	height: 75%;
+	width: 100%;
+	@include min-screen($md){
+		width: auto;
+		height: 100%;
+		width: prc(720, 1920);
+		position: absolute;
+		left: 0;
+		top: 0;
+		
+	}
+}
+.statuses {}
+.status {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	@include adaptive-value('grid-row-gap', 17, 5, 2);
+	
+	&:not(:last-child){
+		@include adaptive-value('margin-bottom', 76, 20, 2);
+	}
+
+}
+.status__header {}
+.status__label {}
+.status-value {
+	font-weight: 700;
+	text-align: right;
+}
+.status__bar {
+	position: relative;
+	display: flex;
+	height: 10px;
+	grid-column: span 2;
+	background-color: $gray;
+}
+.status__progress {
+	background-color: $accent;
+}

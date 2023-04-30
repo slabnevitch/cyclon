@@ -5,11 +5,15 @@
 		}
 	}
 	.page-header__title{
-		@include adaptive-value('margin-bottom', 132, 20, 2);
+		
+	}
+	.page__content{
+		@include min-screen($md){
+			padding-right: 30px;
+		}
 	}
 }
 .page__content{
-	padding-right: 30px;
 		flex: 0 1 50%;
 	@include min-screen($md){
 		

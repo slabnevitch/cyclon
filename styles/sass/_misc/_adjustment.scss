@@ -293,9 +293,11 @@ padding-bottom: 52.25%;
 }
 .page{
 		// position: relative;
-		@include max-screen($sm){
-			padding-top: 35px;
-			// padding-bottom: 35px;
+		&:not(.page-01){
+			@include max-screen($sm){
+				padding-top: 50px;
+			}
+
 		}
 		&:after{
 			position: absolute;
@@ -381,10 +383,11 @@ padding-bottom: 52.25%;
 	// font-size: 60px;
 	@include adaptive-value('font-size', 60, 35, 2);
 	line-height: calc(75 / 60);
+	@include adaptive-value('margin-bottom', 132, 20, 2);
 
-	// @include max-screen($lg){
-	// 	max-width: none;
-	// }
+	@include min-screen(1920px){
+		max-width: none;
+	}
 }
 .page-header__prgrf{
 	max-width: rem(529);
