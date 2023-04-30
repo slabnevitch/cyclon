@@ -2,7 +2,8 @@
 	.wrapper{
 
 		@include max-screen($md){
-			flex-direction: column;
+			// flex-direction: column;
+			display: block;
 		}
 		@include min-screen($md){
 			justify-content: flex-end;
@@ -19,7 +20,7 @@
 }
 .page-03__img{
 	// padding-bottom: prc(720,1080);
-	height: 75%;
+	height: 400px;
 	width: 100%;
 	@include min-screen($md){
 		width: auto;
