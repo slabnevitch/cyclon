@@ -1,0 +1,25 @@
+.page-05{
+	.wrapper{
+		align-items: flex-start;
+
+		@include max-screen($sm){
+			display: block;
+		}
+	}
+	.page__content{
+		align-self: center;
+		@include min-screen($sm){
+			padding-right: 30px;
+			
+		}
+	}
+}
+.page-05__imgs{
+	height: 100%;
+ flex: 0 1 50%;
+ display: grid;
+ grid-template-rows: repeat(2, 1fr);
+}
+.page-05__img{
+	padding-bottom: prc(540, 720);
+}

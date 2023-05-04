@@ -1,10 +1,10 @@
 .page-04__wrapper{
+		flex-direction: column;
 	@include max-screen($sm){
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 		// height: 100%;
 	}
 	@include min-screen($sm){
-		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
 		
@@ -13,9 +13,10 @@
 	.page-header__title{
 		max-width: rem(855);
 	}
+	
 }
 .advantages {
-		padding-bottom: 50px;
+	padding-bottom: 50px;
 	display: grid;
 	width: 100%;
 	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
