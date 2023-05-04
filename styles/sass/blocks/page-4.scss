@@ -1,0 +1,46 @@
+.page-04__wrapper{
+	@include max-screen($sm){
+		flex-wrap: wrap;
+		// height: 100%;
+	}
+	@include min-screen($sm){
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		
+	}
+
+	.page-header__title{
+		max-width: rem(855);
+	}
+}
+.advantages {
+		padding-bottom: 50px;
+	display: grid;
+	width: 100%;
+	grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+	@include adaptive-value('gap', 50, 25, 2);
+}
+.advantage {
+	display: flex;
+	flex-direction: column;
+	@include adaptive-value('gap', 30, 10, 2);
+}
+.advantage__icon {
+	width: 48px;
+	height: 48px;
+	position: relative;
+
+	img{
+		@include absolute-center;
+	}
+}
+.advantage__title {
+	font-weight: 700;
+	@include adaptive-value('font-size', 30, 24, 2);
+	line-height: calc(38 / 30);
+	color: $accent;
+}
+.advantage__text {
+	margin: 0;
+}
