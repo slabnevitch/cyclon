@@ -1,0 +1,107 @@
+.page-09{
+	.wrapper{
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-template-areas: "left-top right-top header"
+                        "left-bottom right-bottom header";
+
+
+        @include max-screen($md){
+        	grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+        	grid-template-areas: "header header"
+        				"left-top right-top"
+                        "left-bottom right-bottom";
+        }
+        @include max-screen($xss){
+        	// padding-bottom: 50px;
+        	grid-template-columns: repeat(1, 1fr);
+			grid-template-rows: repeat(3, auto);
+			 grid-auto-flow: row;
+        	grid-template-areas: "header"
+        				"right-top"
+        				"left-top"
+                        "left-bottom"
+                        "right-bottom";
+
+        }
+	}
+	.page__content {
+		// grid-column: 3/3;
+		// grid-row: 1/3;
+		// justify-items: center;
+		grid-area: header;
+		// height: 100%;
+		// outline: 1px solid;
+
+		@include min-screen($md){
+			display: flex;
+			justify-content: center;
+			
+		}
+	}
+	.page-header {
+
+		@include min-screen($md){
+			writing-mode: vertical-rl;
+			transform: rotate(-180deg);
+		}
+		.page-header__title {
+			@include min-screen($md){
+				
+			}
+		}
+	}
+}
+.page-header__text {}
+.tile {
+	// outline: 1px solid;
+
+	
+
+	&:first-of-type{
+		grid-area: right-bottom;
+	}
+
+	&:nth-of-type(2){
+		grid-area: right-top;
+		text-align: right;		
+	}
+	&:nth-child(3){
+		grid-area: left-top;
+	}
+	&:nth-child(4){
+		grid-area: left-bottom;	
+		
+	}
+
+	&-img{
+		align-self: stretch;
+		@include max-screen($xs){
+			padding-bottom: 100%;
+		}
+		@media screen and (max-width: 480px) {
+			@include adaptive-value('margin-left',  -240, -15, 2);
+			@include adaptive-value('margin-right',  -240, -15, 2);
+			
+		}
+		@include min-screen($xs){
+			// height: 100%;
+		
+		}
+	}
+}
+.tile-text {}
+.tile-text__title {
+	margin-bottom: em(22);
+	font-weight: 700;
+	@include adaptive-value('font-size', 30, 18, 2);
+	line-height: calc(38/30);
+}
+.tile-text__par {
+
+}
+.tile-img {}
+._fit {}
+._fit-img {}
