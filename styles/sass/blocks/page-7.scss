@@ -1,0 +1,31 @@
+.page-07{
+	.wrapper{
+		justify-content: flex-start;
+	}
+	.advantages{
+        display: block;
+        flex: 0 1 50%;
+        padding-bottom: 0;
+    }
+    .advantage{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: repeat(2, auto);
+        @include adaptive-value('column-gap', 50, 20, 2);
+        @include adaptive-value('row-gap', 30, 15, 2);
+
+        &:not(:last-child){
+            @include adaptive-value('margin-bottom', 60, 30, 2);
+        }
+
+
+    }
+    .advantage__icon{
+        grid-row: span 2;
+        align-self: center;
+    }
+}
+.page-07__img{
+	right: 0;
+	left: auto;
+}

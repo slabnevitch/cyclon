@@ -1,0 +1,22 @@
+.stats{
+	max-width: rem(500);
+	display: flex;
+	justify-content: space-between;
+	@include min-screen(1920px){
+		max-width: none;
+	}
+}
+.stat{
+	display: flex;
+	flex-direction: column;
+	@include adaptive-value('gap', 16, 0, 2);
+}
+.stat__num {
+	font-weight: 700;
+	@include adaptive-value('font-size', 60, 30, 2);
+	font-size: 60px;
+	line-height: calc(75/60);
+	color: $accent;
+}
+.stat__label {
+}
