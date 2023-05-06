@@ -1,0 +1,20 @@
+.page-12{
+	.page__body{
+		@include adaptive-value('padding-top', 247, 50, 2);
+		@include adaptive-value('padding-bottom', 247, 50, 2);
+	}
+	.stats{
+		position: relative;
+		color: #E3E6EC;
+		max-width: none;
+		justify-content: flex-start;
+	}
+	.stat{
+		flex: 0 0 calc(100%/3);
+		text-align: center;
+	}
+	.stat__num{
+		color: #E3E6EC;
+
+	}
+}
