@@ -1,0 +1,39 @@
+.page-10{
+	.wrapper{
+		align-items: stretch;
+
+		@include max-screen($sm){
+			flex-direction: column;
+		}
+	}
+}
+.design {
+	display: flex;
+	flex-direction: column;
+
+}
+.design__img {
+	flex: 0 1 prc(620,1080);
+
+	@include max-screen($sm){
+		padding-bottom: 50%;
+	}
+}
+._fit {}
+._fit-img {}
+.design__body {
+	@include adaptive-value('padding-right', 60, 15, 2);
+	@include adaptive-value('margin-top', 60, 30, 2);
+
+	@include max-screen($sm){
+		order: -1;
+	}
+}
+.design__title {
+	margin-bottom: em(22);
+	font-weight: 700;
+	@include adaptive-value('font-size', 30, 18, 2);
+	line-height: calc(38/30);
+	color: #1C1F25;
+}
+.design__text {}

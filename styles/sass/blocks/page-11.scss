@@ -1,0 +1,58 @@
+.page-11{
+	&:before{
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: prc(720, 1920);
+		background: rgba(196, 196, 196, 0.3);
+
+		@include max-screen($sm){
+			width: 100%;
+		}
+	}
+	.wrapper{
+		@include max-screen($sm){
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+	.page__content{
+		@include min-screen($sm){
+			@include adaptive-value('padding-left',  240, 0, 2);
+			
+		}
+	}
+}
+.page-11__img{
+	position: relative;
+	z-index: 1;
+	@include max-screen($sm){
+		margin-bottom: 30px;
+		margin-top: 20px;
+	}
+	@include min-screen($sm){
+		flex: 0 1 50%;
+	}
+	img{
+		max-width: 100%;
+	}
+}
+.projects {
+	display: grid;
+	@include adaptive-value('gap', 60, 20, 2);
+}
+.project {
+	@include max-screen(1920px){
+		
+		max-width: rem(420);
+	}
+	@include max-screen($sm){
+		max-width: none;
+	}
+}
+.project__title {
+	@extend .advantage__title;
+}
+.project__text {}
