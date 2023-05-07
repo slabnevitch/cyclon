@@ -177,23 +177,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 	observer.observe(document.querySelector('.page-12'));
 
+}); //DOMContentLoaded
 	// Для правильного импорта нужно добавить " exports.docSlider = docSlider;" в node_modules/docslider/docSlider.js
 	docSlider.init({
-	beforeChange: function(index) {
-        console.log( index );
+		scrollReset: true,
+		beforeChange: function(index) {
+        // console.log( 'beforeChange' );
 		// toPage.classList.add('docSlider-next'); 
-	},
-    afterChange: function(toIndex){
-        // console.log(toIndex);
-        var currentPage = document.querySelectorAll('.page')[toIndex];
+		 // document.querySelectorAll('.page')[index+1].classList.add('docSlider-next');
+		 // document.querySelectorAll('.page')[index-1].classList.add('docSlider-prev');
+		},
+		afterChange: function(toIndex){
+        console.log(toIndex);
+			var currentPage = document.querySelectorAll('.page')[toIndex];
+        // document.querySelectorAll('.page')[index].classList.remove('docSlider-next');
         // console.log(currentPage)
         // console.log(currentPage.querySelectorAll('[data-animated-counter]'))
-        if(currentPage.querySelectorAll('[data-animated-counter]')){
-        	digitsCountersInit(currentPage.querySelectorAll('[data-animated-counter]'));
-        }
-    }
-});
-}); //DOMContentLoaded
+			if(currentPage.querySelectorAll('[data-animated-counter]')){
+				digitsCountersInit(currentPage.querySelectorAll('[data-animated-counter]'));
+			}
+		}
+	});
 
 window.addEventListener('load', winLoad);
 	function digitsCountersInit(digitsCountersItems) {
@@ -225,5 +229,5 @@ window.addEventListener('load', winLoad);
 	}
 function winLoad() {
 
-	digitsCountersInit();
+	// digitsCountersInit();
 }
