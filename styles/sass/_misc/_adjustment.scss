@@ -383,9 +383,11 @@ padding-bottom: 52.25%;
 
 	line-height: calc(31 / 25);
 
+
 	&:not(:last-child){
 		margin-bottom: em(32);
 	}
+	@extend ._animate;
 
 }
 .page-header__title {
@@ -401,11 +403,23 @@ padding-bottom: 52.25%;
 	@include min-screen(1920px){
 		max-width: none;
 	}
+	// transition-delay: 2s;
+	@extend ._animate;
 }
 .page-header__prgrf{
 	max-width: rem(529);
 	font-size: 25px;
 	line-height: calc(45 / 25);
 
+}
+._animate{
+	opacity: 0;
+	transition: all 1s;
+	transform: translateY(50px);
+	.docSlider-current &{
+		opacity: 1;
+		transform: translateY(0);
+
+	}
 }
 /*--------------------END adjustment----------------------*/ 

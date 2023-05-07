@@ -5,6 +5,8 @@
 
 // // Import vendor jQuery plugin example (not module)
 // import Parallax from 'parallax-js'
+import {docSlider} from "/node_modules/docslider/docSlider.js"
+console.log(docSlider)
 
 // import Swiper, { Navigation, Mousewheel } from 'swiper';
 // Swiper.use([Navigation, Mousewheel]);
@@ -139,14 +141,89 @@
 // require('./vendor/libs-vanilla/counter/counter.js')
 
 // var tingle = require('./vendor/libs-vanilla/tingle-master/dist/tingle.js')
-var docSlider = require('./vendor/libs-vanilla/docSlider/docSlider.js')
+// var docSlider = require('./vendor/libs-vanilla/docSlider/docSlider.js')
 	
 //- end VANILLA JS===================================
 
 // require('./vendor/color-scheme-switcher.js')
 // require('./vendor/jquery-scrollify/jquery.scrollify.js')
+require('./vendor/libs-vanilla/waypoints/noframework.waypoints.js')
+require('./vendor/libs-vanilla/waypoints/shortcuts/inview.min.js')
 
 document.addEventListener('DOMContentLoaded', () => {
-	console.log(docSlider);
-	// docSlider.init();
+
+	var inview = new Waypoint.Inview({
+	  element: document.querySelector('.page-03'),
+	  enter: function(direction) {
+	    console.log('Enter triggered with direction ' + direction)
+	  },
+	  entered: function(direction) {
+	    console.log('Entered triggered with direction ' + direction)
+	  },
+	  exit: function(direction) {
+	   console.log('Exit triggered with direction ' + direction)
+	  },
+	  exited: function(direction) {
+	    console.log('Exited triggered with direction ' + direction)
+	  }
+	});
+
+	var observer = new IntersectionObserver(function(entries, observer) {
+		entries.forEach(function(entry) {
+			console.log('goal!!')
+			// var targetElement = entry.target,
+			// 	skotnik = 
+		})
+	});
+	observer.observe(document.querySelector('.page-12'));
+
+	// Для правильного импорта нужно добавить " exports.docSlider = docSlider;" в node_modules/docslider/docSlider.js
+	docSlider.init({
+	beforeChange: function(index) {
+        console.log( index );
+		// toPage.classList.add('docSlider-next'); 
+	},
+    afterChange: function(toIndex){
+        // console.log(toIndex);
+        var currentPage = document.querySelectorAll('.page')[toIndex];
+        // console.log(currentPage)
+        // console.log(currentPage.querySelectorAll('[data-animated-counter]'))
+        if(currentPage.querySelectorAll('[data-animated-counter]')){
+        	digitsCountersInit(currentPage.querySelectorAll('[data-animated-counter]'));
+        }
+    }
+});
 }); //DOMContentLoaded
+
+window.addEventListener('load', winLoad);
+	function digitsCountersInit(digitsCountersItems) {
+		var digitsCounters = digitsCountersItems ? digitsCountersItems : document.querySelectorAll('[data-animated-counter]');
+		if (digitsCounters){
+			digitsCounters.forEach(function(digitsCounter) {
+				digitsCountersAnimate(digitsCounter);
+			});
+		}
+	}
+
+	function digitsCountersAnimate(digitsCounter) {
+		var startTimestamp = null,
+			duration = parseInt(digitsCounter.dataset.animatedCounter) ? parseInt(digitsCounter.dataset.animatedCounter) : 2000,
+			startValue = parseInt(digitsCounter.innerHTML),
+			startPosition = 0,
+			step = function(timestamp) {
+				if(!startTimestamp){
+					startTimestamp = timestamp;
+				}
+				var progress = Math.min((timestamp - startTimestamp) / duration, 1);
+				digitsCounter.innerHTML = Math.floor(progress * (startPosition + startValue));
+
+				if(progress < 1){
+					window.requestAnimationFrame(step);
+				}
+			};
+			window.requestAnimationFrame(step);
+	}
+function winLoad() {
+
+	digitsCountersInit();
+}
