@@ -415,7 +415,15 @@ padding-bottom: 52.25%;
 ._animate{
 	opacity: 0;
 	transition: all 1s;
-	transform: translateY(50px);
+
+	.docSlider-prev &{
+		transform: translateY(-50px);
+
+	}
+	.docSlider-next &{
+		transform: translateY(50px);
+
+	}
 	.docSlider-current &{
 		opacity: 1;
 		transform: translateY(0);

@@ -179,23 +179,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); //DOMContentLoaded
 	// Для правильного импорта нужно добавить " exports.docSlider = docSlider;" в node_modules/docslider/docSlider.js
-	var globalDocsliderFlag = true;
+	var globalDocsliderFlag = true,
+		pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+
 	docSlider.init({
 		scrollReset: true,
+		complete: function() {
+        	if(pages.indexOf(document.querySelector('.docSlider-current')) !== -1){
+        		pages[pages.indexOf(document.querySelector('.docSlider-current')) + 1].classList.add('docSlider-next');
+        	}
+        	if(pages.indexOf(document.querySelector('.docSlider-current')) > 0){
+        		pages[pages.indexOf(document.querySelector('.docSlider-current')) - 1].classList.add('docSlider-prev');
+        	}
+ 
+		},
 		beforeChange: function(index) {
-        console.log('index ' + index );
+        // console.log(arguments );
 		// toPage.classList.add('docSlider-next'); 
-		 document.querySelectorAll('.page')[index+1].classList.add('docSlider-next');
 		 // document.querySelectorAll('.page')[index-1].classList.add('docSlider-prev');
 		},
 		afterChange: function(toIndex){
-        console.log('to index ' + toIndex);
-        // console.log(index);
 			var currentPage = document.querySelectorAll('.page')[toIndex];
-        // document.querySelectorAll('.page')[index].classList.remove('docSlider-next');
-			document.querySelectorAll('.page')[toIndex-1].classList.add('docSlider-prev');
-        // console.log(currentPage)
-        // console.log(currentPage.querySelectorAll('[data-animated-counter]'))
+			pages.forEach(function(item) {
+				item.classList.remove('docSlider-prev');
+				item.classList.remove('docSlider-next');
+			});
+
+			if(pages.indexOf(document.querySelector('.docSlider-current')) !== -1){
+        		// pages[pages.indexOf(document.querySelector('.docSlider-current'))].classList.remove('docSlider-prev');
+        		// pages[pages.indexOf(document.querySelector('.docSlider-current'))].classList.remove('docSlider-next');
+        		if(pages[pages.indexOf(document.querySelector('.docSlider-current')) + 1]){
+        			console.log(pages[pages.indexOf(document.querySelector('.docSlider-current')) + 1]);
+        			pages[pages.indexOf(document.querySelector('.docSlider-current')) + 1].classList.add('docSlider-next');
+
+        		}
+        		if(pages[pages.indexOf(document.querySelector('.docSlider-current')) - 1]){
+        			pages[pages.indexOf(document.querySelector('.docSlider-current')) - 1].classList.add('docSlider-prev');
+        		}
+        	}
+
 			if(currentPage.querySelectorAll('[data-animated-counter]') && currentPage.getAttribute('data-flag') === "true"){
 				digitsCountersInit(currentPage.querySelectorAll('[data-animated-counter]'));
 				currentPage.setAttribute('data-flag', 'false');
